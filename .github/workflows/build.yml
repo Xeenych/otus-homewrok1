@@ -2,14 +2,13 @@ on:
   push:
     branches:
       - '**'
-      - '!release**'
 
 jobs:
   build-job:
     name: Build Firmware
-    runs-on: ubuntu-22.04
-    container:
-      image: xeenych/arm-none-eabi:10.3
+    runs-on: ubuntu-latest
+#   container:
+#      image: xeenych/arm-none-eabi:10.3
 
     steps:
       - name: Checkout
@@ -18,18 +17,15 @@ jobs:
           submodules: recursive
           token: ${{ secrets.CI_TOKEN }}
 
-      - name: Makefile
+      - name: Build
         shell: bash
         run: |
-          cd apps/hub_app_v2
-          make
-
-      - name: Delete objs
-        shell: bash
-        run: rm -rf build/hub_app_v2/obj 
+            cd out
+            cmake ../ -DVERSION=${{ github.run_number }}
+            cmake --build .
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ github.ref_name }}
-          path: build/hub_app_v2
+          path: out/Debug
