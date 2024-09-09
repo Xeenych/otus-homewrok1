@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 
-project(otus_homework_1 VERSION 1)
+project(otus_homework_1)
 
 add_executable(otus_homework_1_cli src/main.cpp)
 
