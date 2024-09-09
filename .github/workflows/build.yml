@@ -23,7 +23,7 @@ jobs:
             cd out
             cmake ../ -DVERSION=${{ github.run_number }}
             cmake --build .
-            zip -r .
+            zip -r out.zip .
 
 #      - name: Upload Artifact
 #        uses: actions/upload-artifact@v4
