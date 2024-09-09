@@ -19,6 +19,7 @@ jobs:
       - name: Build
         shell: bash
         run: |
+            mkdir out
             cd out
             cmake ../ -DVERSION=${{ github.run_number }}
             cmake --build .
