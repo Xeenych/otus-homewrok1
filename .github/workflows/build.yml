@@ -23,6 +23,7 @@ jobs:
             cd out
             cmake ../ -DVERSION=${{ github.run_number }}
             cmake --build .
+            cmake --build . --target package
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4

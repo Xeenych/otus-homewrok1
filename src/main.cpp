@@ -3,7 +3,6 @@
 #include <iostream>
 
 int main() {
-    int N = VERSION;
-    std::cout << "build " << N << std ::endl << "Hello, World!";
+    std::cout << "build " << VERSION << std ::endl << "Hello, World!";
     return 0;
 }
